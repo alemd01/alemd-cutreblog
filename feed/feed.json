@@ -1,0 +1,38 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Cutreblog",
+  "language": "es",
+  "home_page_url": "https://example.com/",
+  "feed_url": "https://example.com/feed/feed.json",
+  "description": "Blog con prácticas que iré haciendo a lo largo del curso.",
+  "author": {
+    "name": "Alejandro Montes Delgado",
+    "url": "https://example.com/about-me/"
+  },
+  "items": [{
+      "id": "https://example.com/posts/talleres-iaw/",
+      "url": "https://example.com/posts/talleres-iaw/",
+      "title": "Talleres unidad 1",
+      "content_html": "",
+      "date_published": "2022-10-05T00:00:00Z"
+    },{
+      "id": "https://example.com/posts/talleres-ansible/",
+      "url": "https://example.com/posts/talleres-ansible/",
+      "title": "Talleres unidad 1",
+      "content_html": "<h1 id=\"taller-1-ansible-playbook-sencillo\" tabindex=\"-1\">Taller 1: Ansible - Playbook sencillo <a class=\"direct-link\" href=\"https://example.com/posts/talleres-ansible/#taller-1-ansible-playbook-sencillo\" aria-hidden=\"true\">#</a></h1>\n<ol>\n<li>Entrega los ficheros: site.yaml, hosts y template/index.j2.</li>\n</ol>\n<p><a href=\"https://example.com/files/site.yaml\">site.yml</a> <a href=\"https://example.com/files/host\">host</a> <a href=\"https://example.com/files/index.j2\">index.j2</a></p>\n<ol start=\"2\">\n<li>Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.</li>\n</ol>\n<p><img src=\"https://example.com/img/SRI.png\" alt=\"SRI.png\" /></p>\n<ol start=\"3\">\n<li>Responde: ¿Cómo se llama la propiedad que permite que las tareas que ya se han realizado no se vuelvan a ejecutar?</li>\n</ol>\n<p>Idempotencia</p>\n<ol start=\"4\">\n<li>Captura de pantalla, donde se vea el fichero foo.txt en el servidor configurado.</li>\n</ol>\n<p><img src=\"https://example.com/img/SRI2.png\" alt=\"SRI2.png\" /></p>\n<ol start=\"5\">\n<li>Captura de pantalla donde se vea el acceso desde el navegador al servidor web, y se vea el contenido del fichero index.html.</li>\n</ol>\n<p><img src=\"https://example.com/img/SRI3.png\" alt=\"SRI3.png\" /></p>\n<ol start=\"6\">\n<li>Entrega la URL de tu repositorio con el que estas trabajando.</li>\n</ol>\n<p><a href=\"https://github.com/alemd01/taller_ansible_vagrant/\">Github</a></p>\n",
+      "date_published": "2022-10-05T00:00:00Z"
+    },{
+      "id": "https://example.com/posts/instalacion-pxe-preseed/",
+      "url": "https://example.com/posts/instalacion-pxe-preseed/",
+      "title": "Creación de un sistema automatizado de instalación.",
+      "content_html": "<p><em>Instalación automatizada basada en medio de almacenamiento extraíble.</em></p>\n<p>Usaremos 7z para descomprimir la iso.</p>\n<pre class=\"language-diff-js\"><code class=\"language-diff-js\"><span class=\"token coord\">7z x /mnt/Archivos/ISOs/debian-10.6.0-amd64-xfce-CD-1.iso</span></code></pre>\n<p><img src=\"https://example.com/img/ASO-P1.8.png\" alt=\"ASO-P1.8.png\" /></p>\n<p>descomprimimos el initrd. Damos permisos a la carpeta que vamos a modificar, ponemos el preseed en el initrd, volvemos a comprimir y ponemos los permisos de antes</p>\n<pre class=\"language-diff-js\"><code class=\"language-diff-js\"><span class=\"token coord\">7z x initrd.gz</span><br />chmod +w -R install.amd/<br />echo preseed.cfg | cpio -H newc -o -A -F install.amd/initrd<br />gzip install.amd/initrd<br />chmod -w -R install.amd/</code></pre>\n<p>Regeneramos el md5sum.txt</p>\n<pre class=\"language-diff-js\"><code class=\"language-diff-js\">chmod +w md5sum.txt<br />find -follow -type f ! -name md5sum.txt -print0 | xargs -0 md5sum > md5sum.txt<br />chmod -w md5sum.txt</code></pre>\n<p>Creamos una nueva iso booteable con el comando <em>genisoimage</em></p>\n<pre class=\"language-diff-js\"><code class=\"language-diff-js\">sudo genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../debian-10.6.0-amd64-xfce-CD-1.iso </code></pre>\n<p>Ya tenemos la iso lista, ahora haremos una instalación desatendida. Ponemos el disco con la iso e iniciamos la máquina. Le damos a <em>Advanced options</em>.\n<img src=\"https://example.com/img/ASO-P1.9.png\" alt=\"imagen\" /></p>\n<p>Ahora le damos a <em>Automated install</em> y empezará la instalación\n<img src=\"https://example.com/img/ASO-P1.10.png\" alt=\"imagen\" /></p>\n<p>ponemos contraseña de root y del usuario(me da problemas en el preseed y he decidido ponerla antes de la instalación).\n<img src=\"https://example.com/img/ASO-P1.11.png\" alt=\"imagen\" /></p>\n<p>Ahora empieza la instalación desatendida.\n<img src=\"https://example.com/img/ASO-P1.12.png\" alt=\"imagen\" /></p>\n<p>Aquí muestro la salida del comando <em>df -h</em>\n<img src=\"https://example.com/img/ASO-P1.14.png\" alt=\"imagen\" /></p>\n",
+      "date_published": "2022-10-05T00:00:00Z"
+    },{
+      "id": "https://example.com/posts/instalacion-debian-11/",
+      "url": "https://example.com/posts/instalacion-debian-11/",
+      "title": "Instalación de Debian 11 en el equipo de trabajo",
+      "content_html": "<p>He instalado en mi equipo de trabajo debian 11 con lvm, a continuación, explico de forma detallada como lo he instalado, configurado y los problemas e inconvenientes que me han surgido a lo largo de la instalación. En mi equipo tengo 2 discos duros, un HDD de 1 Tb de capacidad y un SSD de 240 Gb, al poner lvm en mi equipo lo he estructurado de la siguiente manera:</p>\n<p>El SSD esta particionado por la mitad, y una partición está reservada para windows la otra partición la he usado como volumen físico. En el caso del disco duro es exactamente igual está particionado en 2, 500gb cada partición, una de ellas está reservada para los archivos y la otra la he usado como otro volumen físico. He hecho 2 volúmenes de grupo, uno por disco, para que no interfiera en el rendimiento del ssd. En el ssd puse 2 volúmenes lógicos, uno la raíz con 30 Gb y el otro volumen lógico está el boot al que le di 1Gb.\nEn el HDD, tengo 2 particiones, una de ellas la he usado como volumen físico, he creado un grupo de volúmenes con este volumen físico y en el grupo de volúmenes he hecho 2 volúmenes lógicos, uno de 100Gb en el que he puesto la raiz y otro volumen lógico de 230Gb en el que he puesto el var.</p>\n<p>Una vez instalado el S.O he tenido los siguientes problemas con los drivers:\nLa tarjeta Wi-FI no me funcionaba, para solucionarlo hice el siguiente comando:</p>\n<pre class=\"language-diff-js\"><code class=\"language-diff-js\">sudo apt install firmware-atheros</code></pre>\n<p>por último usé este comando para instalar firmware de linux.</p>\n<pre class=\"language-diff-js\"><code class=\"language-diff-js\">sudo apt-get install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree</code></pre>\n",
+      "date_published": "2022-10-05T00:00:00Z"
+    }
+  ]
+}
