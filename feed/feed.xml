@@ -17,11 +17,11 @@
 		<link href="https://example.com/posts/talleres-iaw/"/>
 		<updated>2022-10-05T00:00:00Z</updated>
 		<id>https://example.com/posts/talleres-iaw/</id>
-		<content type="html">&lt;p&gt;&lt;em&gt;TALLER 1: Introducción a git y GitHub&lt;/em&gt;&lt;/p&gt;
+		<content type="html">&lt;p&gt;##TALLER 1: Introducción a git y GitHub&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Una captura de pantalla donde se vea que has creado el repositorio.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;!TALLER1-IAW.png!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/TALLER1-IAW.png&quot; alt=&quot;TALLER1-IAW.png&quot; /&gt;&lt;/p&gt;
 &lt;ol start=&quot;2&quot;&gt;
 &lt;li&gt;El contenido del fichero .git/config para que se vea que has clonado el repositorio con la URL ssh.&lt;/li&gt;
 &lt;/ol&gt;
@@ -29,53 +29,23 @@
 &lt;ol start=&quot;3&quot;&gt;
 &lt;li&gt;La salida de la instrucción git log para ver los commits que has realizado (debe aparecer como autor tu nombre completo).&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;commit 421dec9a6988d91a1ac7c871ca9e4b042e803df7
-Author: alemd01 &lt;a href=&quot;mailto:aaleemd11@gmail.com&quot;&gt;aaleemd11@gmail.com&lt;/a&gt;
-Date:   Mon Sep 19 10:28:31 2022 +0200
-He borrado el fichero prueba.txt&lt;/p&gt;
-&lt;p&gt;commit d584d99ece167dedc0b8b649471c11a453652d2b
-Author: alemd01 &lt;a href=&quot;mailto:aaleemd11@gmail.com&quot;&gt;aaleemd11@gmail.com&lt;/a&gt;
-Date:   Mon Sep 19 10:27:57 2022 +0200
-He cambiado el nombre al fichero&lt;/p&gt;
-&lt;p&gt;commit 2793b586ee7a7d89184f7313ec4d92ced9f2c64a
-Author: alemd01 &lt;a href=&quot;mailto:aaleemd11@gmail.com&quot;&gt;aaleemd11@gmail.com&lt;/a&gt;
-Date:   Mon Sep 19 10:26:59 2022 +0200
-He modificado el fichero prueba.txt&lt;/p&gt;
-&lt;p&gt;commit e6195890e08484aa86eb1fc9c7c93d8448328c33
-Author: alemd01 &lt;a href=&quot;mailto:aaleemd11@gmail.com&quot;&gt;aaleemd11@gmail.com&lt;/a&gt;
-Date:   Mon Sep 19 10:17:13 2022 +0200
-He creado el fichero prueba.txt&lt;/p&gt;
-&lt;p&gt;commit 2093f3e2515054c1d7223d79b373c89526beebc4
-Author: alemd01 &lt;a href=&quot;mailto:78356101+alemd01@users.noreply.github.com&quot;&gt;78356101+alemd01@users.noreply.github.com&lt;/a&gt;
-Date:   Mon Sep 19 10:15:13 2022 +0200
-Initial commit&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;commit 421dec9a6988d91a1ac7c871ca9e4b042e803df7&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:28:31 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He borrado el fichero prueba&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;txt&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit d584d99ece167dedc0b8b649471c11a453652d2b&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:27:57 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He cambiado el nombre al fichero&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit 2793b586ee7a7d89184f7313ec4d92ced9f2c64a&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:26:59 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He modificado el fichero prueba&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;txt&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit e6195890e08484aa86eb1fc9c7c93d8448328c33&lt;br /&gt;Author: alemd01 &amp;lt;aaleemd11@gmail.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:17:13 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; He creado el fichero prueba&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;txt&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;commit 2093f3e2515054c1d7223d79b373c89526beebc4&lt;br /&gt;Author: alemd01 &amp;lt;78356101+alemd01@users.noreply.github.com&gt;&lt;br /&gt;Date:   Mon Sep 19 10:15:13 2022 +0200&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt; Initial commit&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;ol start=&quot;4&quot;&gt;
-&lt;li&gt;buscar información para crear un nuevo repositorio llamado prueba2_tu_nombre. en esta ocasión, crea primero el repositorio local (usando git init) y luego busca información para sincronizarlo y crear el repositorio remoto en GitHub. Comenta los pasos que has realizado y manda alguna prueba de funcionamiento.&lt;/li&gt;
+&lt;li&gt;buscar información para crear un nuevo repositorio llamado prueba2_tu_nombre. en esta ocasión, crea primero el repositorio local (usando git init) y luego busca información para sincronizarlo y crear el repositorio remoto en GitHub. Comenta los pasos que has realizado y manda alguna prueba de funcionamiento.
+Primero hay que crear un repositorio en Github, después hay que crear un directorio en nuestra máquina local. Creamos por ejemplo el archivo README. Entramos en la carpeta y hacemos un git init.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Primero hay que crear un repositorio en Github, después hay que crear un directorio en nuestra máquina local. Creamos por ejemplo el archivo README. Entramos en la carpeta y hacemos un git init.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;pre&amp;gt;mkdir prueba2_AlejandroMontes&amp;lt;/pre&amp;gt;
- 
- &amp;lt;pre&amp;gt;cd prueba2_AlejandroMontes/&amp;lt;/pre&amp;gt;
-
- &amp;lt;pre&amp;gt;echo &amp;quot;# prueba2_AlejandroMontes&amp;quot; &amp;gt;&amp;gt; README.md&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!taller1-2.png!&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    mkdir prueba2_AlejandroMontes&lt;br /&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    cd prueba2_AlejandroMontes&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    echo &lt;span class=&quot;token string&quot;&gt;&quot;# prueba2_AlejandroMontes&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;README&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;md&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/taller1-2.png&quot; alt=&quot;taller1-2.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Una vez hecho esto, hacemos un git add y un commit.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;pre&amp;gt;git add README.md&amp;lt;/pre&amp;gt;
-
- &amp;lt;pre&amp;gt;git commit -m &amp;quot;primer commit&amp;quot;&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!taller1-3.png!&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git add &lt;span class=&quot;token constant&quot;&gt;README&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;md&lt;br /&gt;&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git commit &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;m &lt;span class=&quot;token string&quot;&gt;&quot;primer commit&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/taller1-3.png&quot; alt=&quot;taller1-3.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Ahora usamos este comando&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;pre&amp;gt;git branch -M main&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git branch &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;M&lt;/span&gt; main&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A continuación, tenemos que hacer un git remote add origin&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; &amp;lt;pre&amp;gt;git remote add origin git@github.com:alemd01/prueba2_AlejandroMontes.git&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;    git remote add origin git@github&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;com&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;alemd01&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;prueba2_AlejandroMontes&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;git&lt;br /&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;por último hacemos un git push&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  &amp;lt;pre&amp;gt;git push -u origin main&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!taller1-4.png!&lt;/p&gt;
+&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;&lt;span class=&quot;token unchanged language-js&quot;&gt;&lt;span class=&quot;token prefix unchanged&quot;&gt; &lt;/span&gt;     git push &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;u origin main&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/taller1-4.png&quot; alt=&quot;taller1-4.png&quot; /&gt;&lt;/p&gt;
 </content>
 	</entry>
 	
