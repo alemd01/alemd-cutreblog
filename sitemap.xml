@@ -52,6 +52,16 @@
   </url>
   
   <url>
+    <loc>https://example.com/tags/iaw/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/examen/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
     <loc>https://example.com/tags/ansible/</loc>
     <lastmod>2022-10-05</lastmod>
   </url>
@@ -62,7 +72,7 @@
   </url>
   
   <url>
-    <loc>https://example.com/tags/iaw/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <loc>https://example.com/posts/introduccion-a-IAW/</loc>
+    <lastmod>2022-10-10</lastmod>
   </url>
 </urlset>

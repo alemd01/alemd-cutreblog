@@ -10,6 +10,12 @@
     "url": "https://example.com/about-me/"
   },
   "items": [{
+      "id": "https://example.com/posts/introduccion-a-IAW/",
+      "url": "https://example.com/posts/introduccion-a-IAW/",
+      "title": "Prueba: Introducción a la implantación de aplicaciones web.",
+      "content_html": "<h1 id=\"alejandro-montes-delgado\" tabindex=\"-1\">Alejandro Montes Delgado. <a class=\"direct-link\" href=\"https://example.com/posts/introduccion-a-IAW/#alejandro-montes-delgado\" aria-hidden=\"true\">#</a></h1>\n<p><img src=\"https://example.com/img/ipasen.png\" alt=\"ipasen.png\" /></p>\n",
+      "date_published": "2022-10-10T00:00:00Z"
+    },{
       "id": "https://example.com/posts/talleres-iaw/",
       "url": "https://example.com/posts/talleres-iaw/",
       "title": "Talleres unidad 1",
