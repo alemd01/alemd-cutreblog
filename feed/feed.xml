@@ -89,6 +89,32 @@ Primero hay que crear un repositorio en Github, después hay que crear un direct
 &lt;li&gt;Entrega la URL de tu repositorio con el que estas trabajando.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/alemd01/taller_ansible_vagrant/&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;taller-2-ansible-playbook-con-roles&quot; tabindex=&quot;-1&quot;&gt;Taller 2: Ansible - Playbook con roles &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/talleres-ansible/#taller-2-ansible-playbook-con-roles&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Entrega una captura de pantalla donde se vea que se ha finalizado la ejecución del playbook.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.1.png&quot; alt=&quot;SRI-T2.1.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Captura de pantalla donde se vea el acceso desde el navegador al servidor web, y se vea el contenido del fichero index.html.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.2.png&quot; alt=&quot;SRI-T2.2.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Captura de pantalla donde se vea el acceso a la base de datos.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.3.png&quot; alt=&quot;SRI-T2.3.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Realiza un cambio en la receta que necesite ejecutar el reinicio del servicio. Ejecuta de nuevo el playbook y comprueba que se ha ejecutado el handler correspondiente.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T2.4.png&quot; alt=&quot;SRI-T2.4.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Entrega la URL de tu repositorio con el que estás trabajando.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/alemd01/taller_ansible_vagrant/&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;taller-3-vagrant-creacion-de-una-maquina-virtual&quot; tabindex=&quot;-1&quot;&gt;Taller 3: Vagrant - Creación de una máquina virtual &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/talleres-ansible/#taller-3-vagrant-creacion-de-una-maquina-virtual&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;El fichero Vagrantfile con el que has trabajado.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Subido el &lt;a href=&quot;https://example.com/posts/talleres-ansible/Vagrantfile&quot;&gt;fichero&lt;/a&gt;&lt;/p&gt;
 </content>
 	</entry>
 	
