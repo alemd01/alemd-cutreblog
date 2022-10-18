@@ -5,12 +5,20 @@
 	
 	<link href="https://example.com/feed/feed.xml" rel="self"/>
 	<link href="https://example.com/"/>
-	<updated>2022-10-10T00:00:00Z</updated>
+	<updated>2022-10-18T00:00:00Z</updated>
 	<id>https://example.com/</id>
 	<author>
 		<name>Alejandro Montes Delgado</name>
 		<email>aaleemd11@gmail.com</email>
 	</author>
+	
+	<entry>
+		<title>Ejercicios gestión de paquetería</title>
+		<link href="https://example.com/posts/gestion-de-paqueteria-aso/"/>
+		<updated>2022-10-18T00:00:00Z</updated>
+		<id>https://example.com/posts/gestion-de-paqueteria-aso/</id>
+		<content type="html"></content>
+	</entry>
 	
 	<entry>
 		<title>Prueba: Introducción a la implantación de aplicaciones web.</title>
@@ -114,7 +122,19 @@ Primero hay que crear un repositorio en Github, después hay que crear un direct
 &lt;ol&gt;
 &lt;li&gt;El fichero Vagrantfile con el que has trabajado.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Subido el &lt;a href=&quot;https://example.com/posts/talleres-ansible/Vagrantfile&quot;&gt;fichero&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Subido el &lt;a href=&quot;https://example.com/files/Vagrantfile&quot;&gt;fichero&lt;/a&gt;&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Una captura de pantalla donde se vea la instrucción de creación de la máquina y el acceso a la máquina virtual.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T3.2.png&quot; alt=&quot;SRI-T3.2.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Capturas de pantallas donde se vean la memoria RAM y las CPU asignadas.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T3.3.png&quot; alt=&quot;SRI-T3.3.png&quot; /&gt;&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Captura de pantalla donde se vean la máquina KVM que se ha creado, la red que se ha creado y el volumen que está usando la máquina usa aprovisionamiento ligero.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/SRI-T3.4.png&quot; alt=&quot;SRI-T3.4.png&quot; /&gt;&lt;/p&gt;
 </content>
 	</entry>
 	
