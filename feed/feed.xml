@@ -24,13 +24,13 @@
 Después de hacer un apt update, hay que hacer un apt upgrade, permite instalar si no tiene instalado y actualiza versiones de los paquetes ya instalados.&lt;/p&gt;
 &lt;h3 id=&quot;2-lista-la-relacion-de-paquetes-que-pueden-ser-actualizados-que-informacion-puedes-sacar-a-tenor-de-lo-mostrado-en-el-listado&quot; tabindex=&quot;-1&quot;&gt;2. Lista la relación de paquetes que pueden ser actualizados. ¿Qué información puedes sacar a tenor de lo mostrado en el listado?. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#2-lista-la-relacion-de-paquetes-que-pueden-ser-actualizados-que-informacion-puedes-sacar-a-tenor-de-lo-mostrado-en-el-listado&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Para mostrar los paquetes que pueden ser instalados, se usa el siguiente comando:&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;# sudo apt list --upgradable&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt list --upgradable&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Muestro captura del comando ejecutado en mi máquina.
 &lt;img src=&quot;https://example.com/img/ASO-P3.1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;En la línea el resaltado verde apunta al nombre del paquete. oldstable indica que no es de la versión stable de debian(esa máquina es debian buster). Los números siguientes indican la versión del paquete y lo siguiente a la arquitectura del paquete(amd64).&lt;/p&gt;
 &lt;h3 id=&quot;3-indica-la-version-instalada-candidata-asi-como-la-prioridad-del-paquete-openssh-client&quot; tabindex=&quot;-1&quot;&gt;3. Indica la versión instalada, candidata así como la prioridad del paquete openssh-client. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#3-indica-la-version-instalada-candidata-asi-como-la-prioridad-del-paquete-openssh-client&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Para ver la versión instalada y la candidata de un paquete usamos el siguiente comando:&lt;/p&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;# sudo apt policy openssh-client&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt policy openssh-client&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;En la siguiente captura veremos la ejecución del comando:
 &lt;img src=&quot;https://example.com/img/ASO-P3.2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Como indica la imagen, la versión instalada es la 1.7.9, la candidata es la misma y la prioridad es 500.&lt;/p&gt;
@@ -39,51 +39,7 @@ Después de hacer un apt update, hay que hacer un apt upgrade, permite instalar 
 &lt;p&gt;Si no está instalado, se puede ver información de un paquete usando apt show nombre_paquete&lt;/p&gt;
 &lt;h3 id=&quot;5-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-que-tienes-actualmente-instalado-en-tu-maquina&quot; tabindex=&quot;-1&quot;&gt;5. Saca toda la información que puedas del paquete openssh-client que tienes actualmente instalado en tu máquina. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#5-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-que-tienes-actualmente-instalado-en-tu-maquina&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Para ver mucha información del paquete podemos usar &lt;em&gt;dpkg -s openssh-client&lt;/em&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;
-Package: openssh-client
-Status: install ok installed
-Priority: standard
-Section: net
-Installed-Size: 4298
-Maintainer: Debian OpenSSH Maintainers &amp;lt;debian-ssh@lists.debian.org&amp;gt;
-Architecture: amd64
-Multi-Arch: foreign
-Source: openssh
-Version: 1:8.4p1-5+deb11u1
-Replaces: openssh-sk-helper, ssh, ssh-krb5
-Provides: rsh-client, ssh-client
-Depends: adduser (&amp;gt;= 3.10), dpkg (&amp;gt;= 1.7.0), passwd, libc6 (&amp;gt;= 2.26), libedit2 (&amp;gt;= 2.11-20080614-0), libfido2-1 (&amp;gt;= 1.5.0), libgssapi-krb5-2 (&amp;gt;= 1.17), libselinux1 (&amp;gt;= 3.1~), libssl1.1 (&amp;gt;= 1.1.1), zlib1g (&amp;gt;= 1:1.1.4)
-Recommends: xauth
-Suggests: keychain, libpam-ssh, monkeysphere, ssh-askpass
-Breaks: openssh-sk-helper
-Conflicts: sftp
-Conffiles:
- /etc/ssh/ssh_config 8a5bddc82befb71d8ef34cc903d3d077
-Description: secure shell (SSH) client, for secure access to remote machines
- This is the portable version of OpenSSH, a free implementation of
- the Secure Shell protocol as specified by the IETF secsh working
- group.
- .
- Ssh (Secure Shell) is a program for logging into a remote machine
- and for executing commands on a remote machine.
- It provides secure encrypted communications between two untrusted
- hosts over an insecure network. X11 connections and arbitrary TCP/IP
- ports can also be forwarded over the secure channel.
- It can be used to provide applications with a secure communication
- channel.
- .
- This package provides the ssh, scp and sftp clients, the ssh-agent
- and ssh-add programs to make public key authentication more convenient,
- and the ssh-keygen, ssh-keyscan, ssh-copy-id and ssh-argv0 utilities.
- .
- In some countries it may be illegal to use any encryption at all
- without a special permit.
- .
- ssh replaces the insecure rsh, rcp and rlogin programs, which are
- obsolete for most purposes.
-Homepage: http://www.openssh.com/
-
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;Package: openssh-client&lt;br /&gt;Status: install ok installed&lt;br /&gt;Priority: standard&lt;br /&gt;Section: net&lt;br /&gt;Installed-Size: 4298&lt;br /&gt;Maintainer: Debian OpenSSH Maintainers &amp;lt;debian-ssh@lists.debian.org&gt;&lt;br /&gt;Architecture: amd64&lt;br /&gt;Multi-Arch: foreign&lt;br /&gt;Source: openssh&lt;br /&gt;Version: 1:8.4p1-5+deb11u1&lt;br /&gt;Replaces: openssh-sk-helper, ssh, ssh-krb5&lt;br /&gt;Provides: rsh-client, ssh-client&lt;br /&gt;Depends: adduser (&gt;= 3.10), dpkg (&gt;= 1.7.0), passwd, libc6 (&gt;= 2.26), libedit2 (&gt;= 2.11-20080614-0), libfido2-1 (&gt;= 1.5.0), libgssapi-krb5-2 (&gt;= 1.17), libselinux1 (&gt;= 3.1~), libssl1.1 (&gt;= 1.1.1), zlib1g (&gt;= 1:1.1.4)&lt;br /&gt;Recommends: xauth&lt;br /&gt;Suggests: keychain, libpam-ssh, monkeysphere, ssh-askpass&lt;br /&gt;Breaks: openssh-sk-helper&lt;br /&gt;Conflicts: sftp&lt;br /&gt;Conffiles:&lt;br /&gt; /etc/ssh/ssh_config 8a5bddc82befb71d8ef34cc903d3d077&lt;br /&gt;Description: secure shell (SSH) client, for secure access to remote machines&lt;br /&gt; This is the portable version of OpenSSH, a free implementation of&lt;br /&gt; the Secure Shell protocol as specified by the IETF secsh working&lt;br /&gt; group.&lt;br /&gt; .&lt;br /&gt; Ssh (Secure Shell) is a program for logging into a remote machine&lt;br /&gt; and for executing commands on a remote machine.&lt;br /&gt; It provides secure encrypted communications between two untrusted&lt;br /&gt; hosts over an insecure network. X11 connections and arbitrary TCP/IP&lt;br /&gt; ports can also be forwarded over the secure channel.&lt;br /&gt; It can be used to provide applications with a secure communication&lt;br /&gt; channel.&lt;br /&gt; .&lt;br /&gt; This package provides the ssh, scp and sftp clients, the ssh-agent&lt;br /&gt; and ssh-add programs to make public key authentication more convenient,&lt;br /&gt; and the ssh-keygen, ssh-keyscan, ssh-copy-id and ssh-argv0 utilities.&lt;br /&gt; .&lt;br /&gt; In some countries it may be illegal to use any encryption at all&lt;br /&gt; without a special permit.&lt;br /&gt; .&lt;br /&gt; ssh replaces the insecure rsh, rcp and rlogin programs, which are&lt;br /&gt; obsolete for most purposes.&lt;br /&gt;Homepage: http://www.openssh.com/&lt;br /&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Como podemos ver, nos muestra una descripción, si está instalado, la prioridad, el directorio del fichero de configuración...&lt;/p&gt;
 &lt;h3 id=&quot;6-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-candidato-a-actualizar-en-tu-maquina&quot; tabindex=&quot;-1&quot;&gt;6. Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#6-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-candidato-a-actualizar-en-tu-maquina&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;7-lista-todo-el-contenido-referente-al-paquete-openssh-client-actual-de-tu-maquina-utiliza-para-ello-tanto-dpkg-como-apt&quot; tabindex=&quot;-1&quot;&gt;7. Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#7-lista-todo-el-contenido-referente-al-paquete-openssh-client-actual-de-tu-maquina-utiliza-para-ello-tanto-dpkg-como-apt&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
@@ -92,58 +48,51 @@ Homepage: http://www.openssh.com/
 &lt;p&gt;Para listar el contenido del paquete con apt usamos el siguiente comando:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P3.4.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;8-listar-el-contenido-de-un-paquete-sin-la-necesidad-de-instalarlo-o-descargarlo&quot; tabindex=&quot;-1&quot;&gt;8. Listar el contenido de un paquete sin la necesidad de instalarlo o descargarlo. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#8-listar-el-contenido-de-un-paquete-sin-la-necesidad-de-instalarlo-o-descargarlo&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre class=&quot;language-diff-js&quot;&gt;&lt;code class=&quot;language-diff-js&quot;&gt;# sudo apt-file list nombre_paquete&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt-file list nombre_paquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;9-simula-la-instalacion-del-paquete-openssh-client&quot; tabindex=&quot;-1&quot;&gt;9. Simula la instalación del paquete openssh-client. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#9-simula-la-instalacion-del-paquete-openssh-client&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Para simular una instalación con apt, se usa el parámetro -s. A continuación, muestro la ejecución del comando:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P3.5.png&quot; alt=&quot;imagen&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;10-que-comando-te-informa-de-los-posible-bugs-que-presente-un-determinado-paquete&quot; tabindex=&quot;-1&quot;&gt;10. ¿Qué comando te informa de los posible bugs que presente un determinado paquete? &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#10-que-comando-te-informa-de-los-posible-bugs-que-presente-un-determinado-paquete&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;El comando que informa sobre los posibles bugs de un paquete es el siguiente:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# sudo apt-listbugs -s all nombre_paquete
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt-listbugs -s all nombre_paquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;11-despues-de-realizar-un-apt-update-and-and-apt-upgrade-si-quisieras-actualizar-unicamente-los-paquetes-que-tienen-de-cadena-openssh-que-procedimiento-seguirias-realiza-esta-accion-con-las-estructuras-repetitivas-que-te-ofrece-bash-asi-como-con-el-comando-xargs&quot; tabindex=&quot;-1&quot;&gt;11. Después de realizar un apt update &amp;amp;&amp;amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#11-despues-de-realizar-un-apt-update-and-and-apt-upgrade-si-quisieras-actualizar-unicamente-los-paquetes-que-tienen-de-cadena-openssh-que-procedimiento-seguirias-realiza-esta-accion-con-las-estructuras-repetitivas-que-te-ofrece-bash-asi-como-con-el-comando-xargs&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;12-como-encontrarias-que-paquetes-dependen-de-un-paquete-especifico&quot; tabindex=&quot;-1&quot;&gt;12. ¿Cómo encontrarías qué paquetes dependen de un paquete específico. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#12-como-encontrarias-que-paquetes-dependen-de-un-paquete-especifico&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;# sudo apt-cache depends nombre_paquete
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt-cache depends nombre_paquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Y para dependencias inversas:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# sudo apt-cache rdepends nombre_paquete
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt-cache rdepends nombre_paquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;13-como-procederias-para-encontrar-el-paquete-al-que-pertenece-un-determinado-fichero&quot; tabindex=&quot;-1&quot;&gt;13. ¿Cómo procederías para encontrar el paquete al que pertenece un determinado fichero? &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#13-como-procederias-para-encontrar-el-paquete-al-que-pertenece-un-determinado-fichero&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;apt-file search ruta&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# apt-file search ruta&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;14-que-procedimientos-emplearias-para-liberar-la-cache-en-cuanto-a-descargas-de-paqueteria&quot; tabindex=&quot;-1&quot;&gt;14. ¿Que procedimientos emplearías para liberar la caché en cuanto a descargas de paquetería? &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#14-que-procedimientos-emplearias-para-liberar-la-cache-en-cuanto-a-descargas-de-paqueteria&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Con &lt;code&gt;apt autoclean&lt;/code&gt; elimina paquetes de la caché que tiene una versión mas moderna.&lt;/p&gt;
 &lt;h3 id=&quot;15-realiza-la-instalacion-del-paquete-keyboard-configuration-pasando-previamente-los-valores-de-los-parametros-de-configuracion-como-variables-de-entorno&quot; tabindex=&quot;-1&quot;&gt;15. Realiza la instalación del paquete keyboard-configuration pasando previamente los valores de los parámetros de configuración como variables de entorno. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#15-realiza-la-instalacion-del-paquete-keyboard-configuration-pasando-previamente-los-valores-de-los-parametros-de-configuracion-como-variables-de-entorno&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;debconf keyboard-configuration
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# debconf keyboard-configuration&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;16-reconfigura-el-paquete-locales-de-tu-equipo-anadiendo-una-localizacion-que-no-exista-previamente-comprueba-a-modificar-las-variables-de-entorno-correspondientes-para-que-la-sesion-del-usuario-utilice-otra-localizacion&quot; tabindex=&quot;-1&quot;&gt;16. Reconfigura el paquete locales de tu equipo, añadiendo una localización que no exista previamente. Comprueba a modificar las variables de entorno correspondientes para que la sesión del usuario utilice otra localización. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#16-reconfigura-el-paquete-locales-de-tu-equipo-anadiendo-una-localizacion-que-no-exista-previamente-comprueba-a-modificar-las-variables-de-entorno-correspondientes-para-que-la-sesion-del-usuario-utilice-otra-localizacion&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;export LANG=en_GB.utf8
-export LANGUAGE=en_GB.utf8
-export LC_ALL=en_GB.utf8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;(sudo) dpkg-reconfigure locales -f --frontend Noninteractive
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# export LANG=en_GB.utf8&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# export LANGUAGE=en_GB.utf8&lt;/span&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# export LC_ALL=en_GB.utf8&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo dpkg-reconfigure locales -f --frontend Noninteractive&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;17-interrumpe-la-configuracion-de-un-paquete-y-explica-los-pasos-a-dar-para-continuar-la-instalacion&quot; tabindex=&quot;-1&quot;&gt;17. Interrumpe la configuración de un paquete y explica los pasos a dar para continuar la instalación. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#17-interrumpe-la-configuracion-de-un-paquete-y-explica-los-pasos-a-dar-para-continuar-la-instalacion&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Probariamos con dpkg --configure -a. Si no funciona, tendríamos que limpiar la caché, apt clean y apt autoclean. Haríamos un apt-get update --fix-missing y apt-get install -f para recuperar las dependencias dañadas.&lt;/p&gt;
 &lt;h3 id=&quot;18-explica-la-instruccion-que-utilizarias-para-hacer-una-actualizacion-completa-de-todos-los-paquetes-de-tu-sistema-de-manera-completamente-no-interactiva&quot; tabindex=&quot;-1&quot;&gt;18. Explica la instrucción que utilizarías para hacer una actualización completa de todos los paquetes de tu sistema de manera completamente no interactiva &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#18-explica-la-instruccion-que-utilizarias-para-hacer-una-actualizacion-completa-de-todos-los-paquetes-de-tu-sistema-de-manera-completamente-no-interactiva&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade -y
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt update &amp;amp;&amp;amp; sudo apt upgrade -y&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;19-bloquea-la-actualizacion-de-determinados-paquetes&quot; tabindex=&quot;-1&quot;&gt;19. Bloquea la actualización de determinados paquetes. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#19-bloquea-la-actualizacion-de-determinados-paquetes&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;apt mark hold paquete
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# apt mark hold paquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&quot;trabajo-con-ficheros-deb&quot; tabindex=&quot;-1&quot;&gt;Trabajo con ficheros .deb &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#trabajo-con-ficheros-deb&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;h3 id=&quot;1-descarga-un-paquete-sin-instalarlo-es-decir-descarga-el-fichero-deb-correspondiente-indica-diferentes-formas-de-hacerlo&quot; tabindex=&quot;-1&quot;&gt;1. Descarga un paquete sin instalarlo, es decir, descarga el fichero .deb correspondiente. Indica diferentes formas de hacerlo. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#1-descarga-un-paquete-sin-instalarlo-es-decir-descarga-el-fichero-deb-correspondiente-indica-diferentes-formas-de-hacerlo&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;wget url_paquete
-
-sudo apt-get download nombrepaquete
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# wget url_paquete&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span class=&quot;token comment&quot;&gt;# sudo apt-get download nombrepaquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;2-como-puedes-ver-el-contenido-que-no-extraerlo-de-lo-que-se-instalara-en-el-sistema-de-un-paquete-deb&quot; tabindex=&quot;-1&quot;&gt;2. ¿Cómo puedes ver el contenido, que no extraerlo, de lo que se instalará en el sistema de un paquete deb? &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#2-como-puedes-ver-el-contenido-que-no-extraerlo-de-lo-que-se-instalara-en-el-sistema-de-un-paquete-deb&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;si es un .deb:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;dpkg -c nombrepaquete
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# dpkg -c nombrepaquete&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;O con tar:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;tar -tf nombre_paquete.tar.gz
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# tar -tf nombre_paquete.tar.gz&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;3-sobre-el-fichero-deb-descargado-utiliza-el-comando-ar-ar-permite-extraer-el-contenido-de-una-paquete-deb-indica-el-procedimiento-para-visualizar-con-ar-el-contenido-del-paquete-deb-con-el-paquete-que-has-descargado-y-utilizando-el-comando-ar-descomprime-el-paquete-que-informacion-dispones-despues-de-la-extraccion-indica-la-finalidad-de-lo-extraido&quot; tabindex=&quot;-1&quot;&gt;3. Sobre el fichero .deb descargado, utiliza el comando ar. ar permite extraer el contenido de una paquete deb. Indica el procedimiento para visualizar con ar el contenido del paquete deb. Con el paquete que has descargado y utilizando el comando ar, descomprime el paquete. ¿Qué información dispones después de la extracción?. Indica la finalidad de lo extraído. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#3-sobre-el-fichero-deb-descargado-utiliza-el-comando-ar-ar-permite-extraer-el-contenido-de-una-paquete-deb-indica-el-procedimiento-para-visualizar-con-ar-el-contenido-del-paquete-deb-con-el-paquete-que-has-descargado-y-utilizando-el-comando-ar-descomprime-el-paquete-que-informacion-dispones-despues-de-la-extraccion-indica-la-finalidad-de-lo-extraido&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# ar -tvx *.deb&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Se extrae:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;debian-binary&lt;/em&gt; que indica la versión del archivo.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;control.tar.xz&lt;/em&gt; que tiene scritps de preinstalación, postinstalación, preborrado, postborrado, configuración...&lt;/li&gt;
+&lt;li&gt;data.tar.xz en este paquete se encuentra todos los archivos que serán extraídos con dpkg.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&quot;4-indica-el-procedimiento-para-descomprimir-lo-extraido-por-ar-del-punto-anterior-que-informacion-contiene&quot; tabindex=&quot;-1&quot;&gt;4. Indica el procedimiento para descomprimir lo extraído por ar del punto anterior. ¿Qué información contiene? &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#4-indica-el-procedimiento-para-descomprimir-lo-extraido-por-ar-del-punto-anterior-que-informacion-contiene&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;tar xvf nombrearchivo.&lt;/p&gt;
 &lt;h1 id=&quot;trabajo-con-repositorios&quot; tabindex=&quot;-1&quot;&gt;Trabajo con repositorios &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#trabajo-con-repositorios&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;h3 id=&quot;1-anade-a-tu-fichero-sources-list-los-repositorios-de-bullseye-backports-y-sid&quot; tabindex=&quot;-1&quot;&gt;1. Añade a tu fichero sources.list los repositorios de bullseye-backports y sid. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#1-anade-a-tu-fichero-sources-list-los-repositorios-de-bullseye-backports-y-sid&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;2-configura-el-sistema-apt-para-que-los-paquetes-de-debian-bullseye-tengan-mayor-prioridad-y-por-tanto-sean-los-que-se-instalen-por-defecto&quot; tabindex=&quot;-1&quot;&gt;2. Configura el sistema APT para que los paquetes de debian bullseye tengan mayor prioridad y por tanto sean los que se instalen por defecto. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/gestion-de-paqueteria-aso/#2-configura-el-sistema-apt-para-que-los-paquetes-de-debian-bullseye-tengan-mayor-prioridad-y-por-tanto-sean-los-que-se-instalen-por-defecto&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
