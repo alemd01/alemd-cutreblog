@@ -50,23 +50,110 @@ Después de hacer un apt update, hay que hacer un apt upgrade, permite instalar 
 <p>para ver información de un paquete oficial instalado, usariamos dpkg -s nombre_paquete.</p>
 <p>Si no está instalado, se puede ver información de un paquete usando apt show nombre_paquete</p>
 <h3 id="5-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-que-tienes-actualmente-instalado-en-tu-maquina" tabindex="-1">5. Saca toda la información que puedas del paquete openssh-client que tienes actualmente instalado en tu máquina. <a class="direct-link" href="#5-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-que-tienes-actualmente-instalado-en-tu-maquina" aria-hidden="true">#</a></h3>
+<p>Para ver mucha información del paquete podemos usar <em>dpkg -s openssh-client</em>.</p>
+<pre><code>
+Package: openssh-client
+Status: install ok installed
+Priority: standard
+Section: net
+Installed-Size: 4298
+Maintainer: Debian OpenSSH Maintainers &lt;debian-ssh@lists.debian.org&gt;
+Architecture: amd64
+Multi-Arch: foreign
+Source: openssh
+Version: 1:8.4p1-5+deb11u1
+Replaces: openssh-sk-helper, ssh, ssh-krb5
+Provides: rsh-client, ssh-client
+Depends: adduser (&gt;= 3.10), dpkg (&gt;= 1.7.0), passwd, libc6 (&gt;= 2.26), libedit2 (&gt;= 2.11-20080614-0), libfido2-1 (&gt;= 1.5.0), libgssapi-krb5-2 (&gt;= 1.17), libselinux1 (&gt;= 3.1~), libssl1.1 (&gt;= 1.1.1), zlib1g (&gt;= 1:1.1.4)
+Recommends: xauth
+Suggests: keychain, libpam-ssh, monkeysphere, ssh-askpass
+Breaks: openssh-sk-helper
+Conflicts: sftp
+Conffiles:
+ /etc/ssh/ssh_config 8a5bddc82befb71d8ef34cc903d3d077
+Description: secure shell (SSH) client, for secure access to remote machines
+ This is the portable version of OpenSSH, a free implementation of
+ the Secure Shell protocol as specified by the IETF secsh working
+ group.
+ .
+ Ssh (Secure Shell) is a program for logging into a remote machine
+ and for executing commands on a remote machine.
+ It provides secure encrypted communications between two untrusted
+ hosts over an insecure network. X11 connections and arbitrary TCP/IP
+ ports can also be forwarded over the secure channel.
+ It can be used to provide applications with a secure communication
+ channel.
+ .
+ This package provides the ssh, scp and sftp clients, the ssh-agent
+ and ssh-add programs to make public key authentication more convenient,
+ and the ssh-keygen, ssh-keyscan, ssh-copy-id and ssh-argv0 utilities.
+ .
+ In some countries it may be illegal to use any encryption at all
+ without a special permit.
+ .
+ ssh replaces the insecure rsh, rcp and rlogin programs, which are
+ obsolete for most purposes.
+Homepage: http://www.openssh.com/
+
+</code></pre>
+<p>Como podemos ver, nos muestra una descripción, si está instalado, la prioridad, el directorio del fichero de configuración...</p>
 <h3 id="6-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-candidato-a-actualizar-en-tu-maquina" tabindex="-1">6. Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina. <a class="direct-link" href="#6-saca-toda-la-informacion-que-puedas-del-paquete-openssh-client-candidato-a-actualizar-en-tu-maquina" aria-hidden="true">#</a></h3>
 <h3 id="7-lista-todo-el-contenido-referente-al-paquete-openssh-client-actual-de-tu-maquina-utiliza-para-ello-tanto-dpkg-como-apt" tabindex="-1">7. Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt. <a class="direct-link" href="#7-lista-todo-el-contenido-referente-al-paquete-openssh-client-actual-de-tu-maquina-utiliza-para-ello-tanto-dpkg-como-apt" aria-hidden="true">#</a></h3>
+<p>Para listar el contenido del paquete con dpkg usamos el siguiente comando:</p>
+<p><img src="/img/ASO-P3.3.png" alt="imagen"></p>
+<p>Para listar el contenido del paquete con apt usamos el siguiente comando:</p>
+<p><img src="/img/ASO-P3.4.png" alt="imagen"></p>
 <h3 id="8-listar-el-contenido-de-un-paquete-sin-la-necesidad-de-instalarlo-o-descargarlo" tabindex="-1">8. Listar el contenido de un paquete sin la necesidad de instalarlo o descargarlo. <a class="direct-link" href="#8-listar-el-contenido-de-un-paquete-sin-la-necesidad-de-instalarlo-o-descargarlo" aria-hidden="true">#</a></h3>
+<pre class="language-diff-js"><code class="language-diff-js"># sudo apt-file list nombre_paquete</code></pre>
 <h3 id="9-simula-la-instalacion-del-paquete-openssh-client" tabindex="-1">9. Simula la instalación del paquete openssh-client. <a class="direct-link" href="#9-simula-la-instalacion-del-paquete-openssh-client" aria-hidden="true">#</a></h3>
+<p>Para simular una instalación con apt, se usa el parámetro -s. A continuación, muestro la ejecución del comando:</p>
+<p><img src="/img/ASO-P3.5.png" alt="imagen"></p>
 <h3 id="10-que-comando-te-informa-de-los-posible-bugs-que-presente-un-determinado-paquete" tabindex="-1">10. ¿Qué comando te informa de los posible bugs que presente un determinado paquete? <a class="direct-link" href="#10-que-comando-te-informa-de-los-posible-bugs-que-presente-un-determinado-paquete" aria-hidden="true">#</a></h3>
+<p>El comando que informa sobre los posibles bugs de un paquete es el siguiente:</p>
+<pre><code># sudo apt-listbugs -s all nombre_paquete
+</code></pre>
 <h3 id="11-despues-de-realizar-un-apt-update-and-and-apt-upgrade-si-quisieras-actualizar-unicamente-los-paquetes-que-tienen-de-cadena-openssh-que-procedimiento-seguirias-realiza-esta-accion-con-las-estructuras-repetitivas-que-te-ofrece-bash-asi-como-con-el-comando-xargs" tabindex="-1">11. Después de realizar un apt update &amp;&amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs. <a class="direct-link" href="#11-despues-de-realizar-un-apt-update-and-and-apt-upgrade-si-quisieras-actualizar-unicamente-los-paquetes-que-tienen-de-cadena-openssh-que-procedimiento-seguirias-realiza-esta-accion-con-las-estructuras-repetitivas-que-te-ofrece-bash-asi-como-con-el-comando-xargs" aria-hidden="true">#</a></h3>
 <h3 id="12-como-encontrarias-que-paquetes-dependen-de-un-paquete-especifico" tabindex="-1">12. ¿Cómo encontrarías qué paquetes dependen de un paquete específico. <a class="direct-link" href="#12-como-encontrarias-que-paquetes-dependen-de-un-paquete-especifico" aria-hidden="true">#</a></h3>
+<pre><code># sudo apt-cache depends nombre_paquete
+</code></pre>
+<p>Y para dependencias inversas:</p>
+<pre><code># sudo apt-cache rdepends nombre_paquete
+</code></pre>
 <h3 id="13-como-procederias-para-encontrar-el-paquete-al-que-pertenece-un-determinado-fichero" tabindex="-1">13. ¿Cómo procederías para encontrar el paquete al que pertenece un determinado fichero? <a class="direct-link" href="#13-como-procederias-para-encontrar-el-paquete-al-que-pertenece-un-determinado-fichero" aria-hidden="true">#</a></h3>
+<pre class="language-bash"><code class="language-bash">apt-file search ruta</code></pre>
 <h3 id="14-que-procedimientos-emplearias-para-liberar-la-cache-en-cuanto-a-descargas-de-paqueteria" tabindex="-1">14. ¿Que procedimientos emplearías para liberar la caché en cuanto a descargas de paquetería? <a class="direct-link" href="#14-que-procedimientos-emplearias-para-liberar-la-cache-en-cuanto-a-descargas-de-paqueteria" aria-hidden="true">#</a></h3>
+<p>Con <code>apt autoclean</code> elimina paquetes de la caché que tiene una versión mas moderna.</p>
 <h3 id="15-realiza-la-instalacion-del-paquete-keyboard-configuration-pasando-previamente-los-valores-de-los-parametros-de-configuracion-como-variables-de-entorno" tabindex="-1">15. Realiza la instalación del paquete keyboard-configuration pasando previamente los valores de los parámetros de configuración como variables de entorno. <a class="direct-link" href="#15-realiza-la-instalacion-del-paquete-keyboard-configuration-pasando-previamente-los-valores-de-los-parametros-de-configuracion-como-variables-de-entorno" aria-hidden="true">#</a></h3>
+<pre><code>debconf keyboard-configuration
+</code></pre>
 <h3 id="16-reconfigura-el-paquete-locales-de-tu-equipo-anadiendo-una-localizacion-que-no-exista-previamente-comprueba-a-modificar-las-variables-de-entorno-correspondientes-para-que-la-sesion-del-usuario-utilice-otra-localizacion" tabindex="-1">16. Reconfigura el paquete locales de tu equipo, añadiendo una localización que no exista previamente. Comprueba a modificar las variables de entorno correspondientes para que la sesión del usuario utilice otra localización. <a class="direct-link" href="#16-reconfigura-el-paquete-locales-de-tu-equipo-anadiendo-una-localizacion-que-no-exista-previamente-comprueba-a-modificar-las-variables-de-entorno-correspondientes-para-que-la-sesion-del-usuario-utilice-otra-localizacion" aria-hidden="true">#</a></h3>
+<pre><code>export LANG=en_GB.utf8
+export LANGUAGE=en_GB.utf8
+export LC_ALL=en_GB.utf8
+</code></pre>
+<pre><code>(sudo) dpkg-reconfigure locales -f --frontend Noninteractive
+</code></pre>
 <h3 id="17-interrumpe-la-configuracion-de-un-paquete-y-explica-los-pasos-a-dar-para-continuar-la-instalacion" tabindex="-1">17. Interrumpe la configuración de un paquete y explica los pasos a dar para continuar la instalación. <a class="direct-link" href="#17-interrumpe-la-configuracion-de-un-paquete-y-explica-los-pasos-a-dar-para-continuar-la-instalacion" aria-hidden="true">#</a></h3>
+<p>Probariamos con dpkg --configure -a. Si no funciona, tendríamos que limpiar la caché, apt clean y apt autoclean. Haríamos un apt-get update --fix-missing y apt-get install -f para recuperar las dependencias dañadas.</p>
 <h3 id="18-explica-la-instruccion-que-utilizarias-para-hacer-una-actualizacion-completa-de-todos-los-paquetes-de-tu-sistema-de-manera-completamente-no-interactiva" tabindex="-1">18. Explica la instrucción que utilizarías para hacer una actualización completa de todos los paquetes de tu sistema de manera completamente no interactiva <a class="direct-link" href="#18-explica-la-instruccion-que-utilizarias-para-hacer-una-actualizacion-completa-de-todos-los-paquetes-de-tu-sistema-de-manera-completamente-no-interactiva" aria-hidden="true">#</a></h3>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre>
 <h3 id="19-bloquea-la-actualizacion-de-determinados-paquetes" tabindex="-1">19. Bloquea la actualización de determinados paquetes. <a class="direct-link" href="#19-bloquea-la-actualizacion-de-determinados-paquetes" aria-hidden="true">#</a></h3>
+<pre><code>apt mark hold paquete
+</code></pre>
 <h1 id="trabajo-con-ficheros-deb" tabindex="-1">Trabajo con ficheros .deb <a class="direct-link" href="#trabajo-con-ficheros-deb" aria-hidden="true">#</a></h1>
 <h3 id="1-descarga-un-paquete-sin-instalarlo-es-decir-descarga-el-fichero-deb-correspondiente-indica-diferentes-formas-de-hacerlo" tabindex="-1">1. Descarga un paquete sin instalarlo, es decir, descarga el fichero .deb correspondiente. Indica diferentes formas de hacerlo. <a class="direct-link" href="#1-descarga-un-paquete-sin-instalarlo-es-decir-descarga-el-fichero-deb-correspondiente-indica-diferentes-formas-de-hacerlo" aria-hidden="true">#</a></h3>
+<pre><code>wget url_paquete
+
+sudo apt-get download nombrepaquete
+</code></pre>
 <h3 id="2-como-puedes-ver-el-contenido-que-no-extraerlo-de-lo-que-se-instalara-en-el-sistema-de-un-paquete-deb" tabindex="-1">2. ¿Cómo puedes ver el contenido, que no extraerlo, de lo que se instalará en el sistema de un paquete deb? <a class="direct-link" href="#2-como-puedes-ver-el-contenido-que-no-extraerlo-de-lo-que-se-instalara-en-el-sistema-de-un-paquete-deb" aria-hidden="true">#</a></h3>
+<p>si es un .deb:</p>
+<pre><code>dpkg -c nombrepaquete
+</code></pre>
+<p>O con tar:</p>
+<pre><code>tar -tf nombre_paquete.tar.gz
+</code></pre>
 <h3 id="3-sobre-el-fichero-deb-descargado-utiliza-el-comando-ar-ar-permite-extraer-el-contenido-de-una-paquete-deb-indica-el-procedimiento-para-visualizar-con-ar-el-contenido-del-paquete-deb-con-el-paquete-que-has-descargado-y-utilizando-el-comando-ar-descomprime-el-paquete-que-informacion-dispones-despues-de-la-extraccion-indica-la-finalidad-de-lo-extraido" tabindex="-1">3. Sobre el fichero .deb descargado, utiliza el comando ar. ar permite extraer el contenido de una paquete deb. Indica el procedimiento para visualizar con ar el contenido del paquete deb. Con el paquete que has descargado y utilizando el comando ar, descomprime el paquete. ¿Qué información dispones después de la extracción?. Indica la finalidad de lo extraído. <a class="direct-link" href="#3-sobre-el-fichero-deb-descargado-utiliza-el-comando-ar-ar-permite-extraer-el-contenido-de-una-paquete-deb-indica-el-procedimiento-para-visualizar-con-ar-el-contenido-del-paquete-deb-con-el-paquete-que-has-descargado-y-utilizando-el-comando-ar-descomprime-el-paquete-que-informacion-dispones-despues-de-la-extraccion-indica-la-finalidad-de-lo-extraido" aria-hidden="true">#</a></h3>
 <h3 id="4-indica-el-procedimiento-para-descomprimir-lo-extraido-por-ar-del-punto-anterior-que-informacion-contiene" tabindex="-1">4. Indica el procedimiento para descomprimir lo extraído por ar del punto anterior. ¿Qué información contiene? <a class="direct-link" href="#4-indica-el-procedimiento-para-descomprimir-lo-extraido-por-ar-del-punto-anterior-que-informacion-contiene" aria-hidden="true">#</a></h3>
 <h1 id="trabajo-con-repositorios" tabindex="-1">Trabajo con repositorios <a class="direct-link" href="#trabajo-con-repositorios" aria-hidden="true">#</a></h1>
