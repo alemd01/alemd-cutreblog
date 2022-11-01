@@ -107,20 +107,52 @@ Después de hacer un apt update, hay que hacer un apt upgrade, permite instalar 
 <p>tar xvf nombrearchivo.</p>
 <h1 id="trabajo-con-repositorios" tabindex="-1">Trabajo con repositorios <a class="direct-link" href="#trabajo-con-repositorios" aria-hidden="true">#</a></h1>
 <h3 id="1-anade-a-tu-fichero-sources-list-los-repositorios-de-bullseye-backports-y-sid" tabindex="-1">1. Añade a tu fichero sources.list los repositorios de bullseye-backports y sid. <a class="direct-link" href="#1-anade-a-tu-fichero-sources-list-los-repositorios-de-bullseye-backports-y-sid" aria-hidden="true">#</a></h3>
+<p>Tenemos que editar el fichero sources.list:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># nano /etc/apt/sources.list</span></code></pre>
+<p>Añadimos al sources.list lo siguiente:</p>
+<pre class="language-bash"><code class="language-bash">deb https://deb.debian.org/debian bullseye-backports main<br>deb https://deb.debian.org/debian sid main</code></pre>
 <h3 id="2-configura-el-sistema-apt-para-que-los-paquetes-de-debian-bullseye-tengan-mayor-prioridad-y-por-tanto-sean-los-que-se-instalen-por-defecto" tabindex="-1">2. Configura el sistema APT para que los paquetes de debian bullseye tengan mayor prioridad y por tanto sean los que se instalen por defecto. <a class="direct-link" href="#2-configura-el-sistema-apt-para-que-los-paquetes-de-debian-bullseye-tengan-mayor-prioridad-y-por-tanto-sean-los-que-se-instalen-por-defecto" aria-hidden="true">#</a></h3>
+<p>Para dar prioridad a los paquetes de debian bullseye, tenemos que crear un archivo llamado <code>preferences.pref</code> y debe contener lo siguiente:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo nano /etc/apt/preferences.d/preferences.p</span></code></pre>
+<pre class="language-txt"><code class="language-txt">Package: *<br>Pin: release a=stable<br>Pin-Priority: 1000</code></pre>
 <h3 id="3-configura-el-sistema-apt-para-que-los-paquetes-de-bullseye-backports-tengan-mayor-prioridad-que-los-de-unstable" tabindex="-1">3. Configura el sistema APT para que los paquetes de bullseye-backports tengan mayor prioridad que los de unstable. <a class="direct-link" href="#3-configura-el-sistema-apt-para-que-los-paquetes-de-bullseye-backports-tengan-mayor-prioridad-que-los-de-unstable" aria-hidden="true">#</a></h3>
+<p>Tenemos que hacer lo mismo que antes pero cambiando lo siguiente:</p>
+<pre class="language-txt"><code class="language-txt">Pin: release a=stable</code></pre>
+<p>Por esto:</p>
+<pre class="language-txt"><code class="language-txt">Pin: release a=bullseye-backports</code></pre>
 <h3 id="4-como-anades-la-posibilidad-de-descargar-paqueteria-de-la-arquitectura-i386-en-tu-sistema-que-comando-has-empleado-lista-arquitecturas-no-nativas-como-procederias-para-desechar-la-posibilidad-de-descargar-paqueteria-de-la-arquitectura-i386" tabindex="-1">4. ¿Cómo añades la posibilidad de descargar paquetería de la arquitectura i386 en tu sistema. ¿Que comando has empleado?. Lista arquitecturas no nativas. ¿Cómo procederías para desechar la posibilidad de descargar paquetería de la arquitectura i386? <a class="direct-link" href="#4-como-anades-la-posibilidad-de-descargar-paqueteria-de-la-arquitectura-i386-en-tu-sistema-que-comando-has-empleado-lista-arquitecturas-no-nativas-como-procederias-para-desechar-la-posibilidad-de-descargar-paqueteria-de-la-arquitectura-i386" aria-hidden="true">#</a></h3>
+<p>El siguiente comando es para añadir:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo dpkg --add-architecture i386</span></code></pre>
+<p>Este comando lista las arquitecturas soportadas por nuestro sistema:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># dpkg --prin-architectures</span></code></pre>
+<p>este comando elimina las arquitecturas:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># dpkg --remove-architecture i386</span></code></pre>
 <h3 id="5-si-quisieras-descargar-un-paquete-como-puedes-saber-todas-las-versiones-disponible-de-dicho-paquete" tabindex="-1">5. Si quisieras descargar un paquete, ¿cómo puedes saber todas las versiones disponible de dicho paquete? <a class="direct-link" href="#5-si-quisieras-descargar-un-paquete-como-puedes-saber-todas-las-versiones-disponible-de-dicho-paquete" aria-hidden="true">#</a></h3>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo apt show --all-versions nombrepaquete</span></code></pre>
 <h3 id="6-indica-el-procedimiento-para-descargar-un-paquete-del-repositorio-stable" tabindex="-1">6. Indica el procedimiento para descargar un paquete del repositorio stable. <a class="direct-link" href="#6-indica-el-procedimiento-para-descargar-un-paquete-del-repositorio-stable" aria-hidden="true">#</a></h3>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo apt install -t stable nombrepaquete</span></code></pre>
 <h3 id="7-indica-el-procedimiento-para-descargar-un-paquete-del-repositorio-de-buster-backports" tabindex="-1">7. Indica el procedimiento para descargar un paquete del repositorio de buster-backports. <a class="direct-link" href="#7-indica-el-procedimiento-para-descargar-un-paquete-del-repositorio-de-buster-backports" aria-hidden="true">#</a></h3>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo apt install -t bullseye-backports nombrepaquete</span></code></pre>
 <h3 id="8-indica-el-procedimiento-para-descargar-un-paquete-del-repositorio-de-sid" tabindex="-1">8. Indica el procedimiento para descargar un paquete del repositorio de sid. <a class="direct-link" href="#8-indica-el-procedimiento-para-descargar-un-paquete-del-repositorio-de-sid" aria-hidden="true">#</a></h3>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo apt install -t sid nombrepaquete</span></code></pre>
 <h3 id="9-indica-el-procedimiento-para-descargar-un-paquete-de-arquitectura-i386" tabindex="-1">9. Indica el procedimiento para descargar un paquete de arquitectura i386. <a class="direct-link" href="#9-indica-el-procedimiento-para-descargar-un-paquete-de-arquitectura-i386" aria-hidden="true">#</a></h3>
+<pre class="language-bash"><code class="language-bash"><span class="token comment"># sudo apt install nombrepaquete:i386</span></code></pre>
 <h1 id="trabajo-con-directorios" tabindex="-1">Trabajo con directorios <a class="direct-link" href="#trabajo-con-directorios" aria-hidden="true">#</a></h1>
 <h3 id="1-que-cometidos-tienen" tabindex="-1">1. Que cometidos tienen: <a class="direct-link" href="#1-que-cometidos-tienen" aria-hidden="true">#</a></h3>
-<p>/var/lib/apt/lists/</p>
-<p>/var/lib/dpkg/available</p>
-<p>/var/lib/dpkg/status</p>
-<p>/var/cache/apt/archives/</p>
+<ul>
+<li>
+<p><strong>/var/lib/apt/lists/</strong>: En este directorio contiene características sobre los repositorios.</p>
+</li>
+<li>
+<p><strong>/var/lib/dpkg/available</strong>: Lista con los paquetes que hay disponibles.</p>
+</li>
+<li>
+<p><strong>/var/lib/dpkg/status</strong>: En este directorio, hay información sobre los paquetes instalados en el sistema.</p>
+</li>
+<li>
+<p><strong>/var/cache/apt/archives/</strong>: Aquí hay los archivos <code>.deb</code> que estan instalados.</p>
+</li>
+</ul>
 
 <hr>
 <ul><li>Anterior: <a href="/posts/introduccion-a-IAW/">Prueba: Introducción a la implantación de aplicaciones web.</a></li>
