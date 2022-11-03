@@ -80,4 +80,9 @@
     <loc>https://example.com/posts/gestion-de-paqueteria-aso/</loc>
     <lastmod>2022-10-18</lastmod>
   </url>
+  
+  <url>
+    <loc>https://example.com/posts/manejo-de-modulos/</loc>
+    <lastmod>2022-10-18</lastmod>
+  </url>
 </urlset>
