@@ -33,25 +33,26 @@ lsmod, lo que hace es leer el contenido del archivo /proc/modules.&lt;/p&gt;
 &lt;h3 id=&quot;4-elimina-el-modulo-correspondiente-a-algun-dispotivo-no-esencial-y-comprueba-que-ocurre-vuelve-a-cargarlo&quot; tabindex=&quot;-1&quot;&gt;4. Elimina el módulo correspondiente a algún dispotivo no esencial y comprueba qué ocurre. Vuelve a cargarlo. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#4-elimina-el-modulo-correspondiente-a-algun-dispotivo-no-esencial-y-comprueba-que-ocurre-vuelve-a-cargarlo&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Vamos a eliminar el modulo usb storage, pero al hacer un lsmod vemos que usb_storage depende de uas, entonces, tenemos que eliminar el modulo uas primero y despues el de usb-storage.&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ modprobe &lt;span class=&quot;token parameter variable&quot;&gt;-r&lt;/span&gt; uas&lt;br /&gt;$ modprobe &lt;span class=&quot;token parameter variable&quot;&gt;-r&lt;/span&gt; usb_storage&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://example.com/posts/manejo-de-modulos/ASO-P4.4.png&quot; alt=&quot;ASO-P4.4.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P4.4.png&quot; alt=&quot;ASO-P4.4.png&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;5-selecciona-un-modulo-que-este-en-uso-en-tu-equipo-y-configura-el-arranque-para-que-no-se-cargue-automaticamente&quot; tabindex=&quot;-1&quot;&gt;5. Selecciona un módulo que esté en uso en tu equipo y configura el arranque para que no se cargue automáticamente. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#5-selecciona-un-modulo-que-este-en-uso-en-tu-equipo-y-configura-el-arranque-para-que-no-se-cargue-automaticamente&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Editamos el siguiente fichero:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/modprobe.d/blacklist.conf&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Añadimos lo siguiente:&lt;/p&gt;
 &lt;pre class=&quot;language-txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;blacklist [nombre_modulo]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://example.com/posts/manejo-de-modulos/ASO-P4.5.png&quot; alt=&quot;ASO-P4.5.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Una vez hecho esto ejecutamos el siguiente comando para actualizar:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; update-initramfs &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;6-carga-el-modulo-loop-obten-informacion-de-que-es-y-para-que-sirve-lista-el-contenido-de-sys-modules-loop-parameters-y-configura-el-equipo-para-que-se-puedan-cargar-como-maximo-12-dispositvos-loop-la-proxima-vez-que-se-arranque&quot; tabindex=&quot;-1&quot;&gt;6. Carga el módulo loop, obtén información de qué es y para qué sirve. Lista el contenido de /sys/modules/loop/parameters y configura el equipo para que se puedan cargar como máximo 12 dispositvos loop la próxima vez que se arranque. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#6-carga-el-modulo-loop-obten-informacion-de-que-es-y-para-que-sirve-lista-el-contenido-de-sys-modules-loop-parameters-y-configura-el-equipo-para-que-se-puedan-cargar-como-maximo-12-dispositvos-loop-la-proxima-vez-que-se-arranque&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; modprobe loop&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://example.com/posts/manejo-de-modulos/ASO-P4.6.png&quot; alt=&quot;ASO-P4.6.png&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://example.com/posts/manejo-de-modulos/ASO-P4.7.png&quot; alt=&quot;ASO-P4.7.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P4.6.png&quot; alt=&quot;ASO-P4.6.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P4.7.png&quot; alt=&quot;ASO-P4.7.png&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;editamos el siguiente fichero:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /etc/modules&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;añadimos lo siguiente:&lt;/p&gt;
 &lt;pre class=&quot;language-txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;options loop max_loop=12&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Una vez hecho esto ejecutamos el siguiente comando para actualizar:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; update-initramfs &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;documento-realizado-por&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Documento realizado por:&lt;/strong&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#documento-realizado-por&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;✒️ &lt;strong&gt;Alejandro Montes Delgado&lt;/strong&gt; - &lt;em&gt;2º ASIR&lt;/em&gt;&lt;/p&gt;
 </content>
 	</entry>
 	
