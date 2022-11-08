@@ -41,7 +41,7 @@ lsmod, lo que hace es leer el contenido del archivo /proc/modules.</p>
 <p>he ejecutado el siguiente comando:</p>
 <pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">dmesg</span> <span class="token parameter variable">-w</span></code></pre>
 <p>lo que hace el parametro -w es que se actualiza en el momento el comando, y al añadir el Pen-Drive se han añadido estas líneas:</p>
-<p><img src="/img/ASO-P4.3.png" alt="ASO-P4.3.png"></p>
+<p><img src="/img/ASO-P4-3.png" alt="ASO-P4.3.png"></p>
 <h3 id="4-elimina-el-modulo-correspondiente-a-algun-dispotivo-no-esencial-y-comprueba-que-ocurre-vuelve-a-cargarlo" tabindex="-1">4. Elimina el módulo correspondiente a algún dispotivo no esencial y comprueba qué ocurre. Vuelve a cargarlo. <a class="direct-link" href="#4-elimina-el-modulo-correspondiente-a-algun-dispotivo-no-esencial-y-comprueba-que-ocurre-vuelve-a-cargarlo" aria-hidden="true">#</a></h3>
 <p>Vamos a eliminar el modulo usb storage, pero al hacer un lsmod vemos que usb_storage depende de uas, entonces, tenemos que eliminar el modulo uas primero y despues el de usb-storage.</p>
 <pre class="language-bash"><code class="language-bash">$ modprobe <span class="token parameter variable">-r</span> uas<br>$ modprobe <span class="token parameter variable">-r</span> usb_storage</code></pre>
