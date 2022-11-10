@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de instancias desde OSC</title>
+    <meta name="description" content="Vamos a trabajar con OpenStack Client.">
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
+    <link rel="stylesheet" href="/css/prism-diff.css">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Cutreblog">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Cutreblog">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Cutreblog</a></h1>
+      <ul class="nav">
+        <li class="nav-item"><a href="/">Inicio</a></li>
+        <li class="nav-item"><a href="/posts/">Blog</a></li>
+        <li class="nav-item"><a href="/about/">Sobre mí</a></li>
+      </ul>
+    </header>
+
+    <main class="tmpl-post">
+
+      <h1>Creación de instancias desde OSC</h1>
+
+<time datetime="2022-11-03">03 Nov 2022</time>
+<a href="/tags/aso/" class="post-tag">ASO</a>
+
+<ol>
+<li>Instala el cliente de línea de comando de OpenStack cómo se muestra en <a href="https://github.com/josedom24/curso_openstack_ies/blob/main/modulo1/osc.md">Instalación y uso básico de OpenStack client (OSC)</a>.</li>
+</ol>
+<p>Primero vamos a crear un entorno virtual donde vamos a trabajar con OpenStack client, para ello instalaremos python y venv si es necesario.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> python3 python3-venv<br><span class="token function">mkdir</span> venv<br><span class="token builtin class-name">cd</span> venv</code></pre>
+<p>Activamos el entorno virtual con el siguiente comando:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> osc<br>python3 <span class="token parameter variable">-m</span> venv osc</code></pre>
+<p>Usamos el siguiente comando para instalar en el entorno virtual el cliente de openstack:</p>
+<pre class="language-bash"><code class="language-bash">pip <span class="token function">install</span> python-openstackclient<span class="token operator">==</span><span class="token number">5.8</span>.0</code></pre>
+<ol start="3">
+<li>Descarga de Horizon tu fichero de credenciales, cargálo y ejecuta la instrucción <code>openstack server list</code> para visualizar tus instancias.</li>
+</ol>
+<p>Una vez descargado el fichero, realizamos lo siguiente:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">source</span> crendenciales.sh</code></pre>
+<p>tendríamos que insertar la contraseña con la que entramos a openstack y ya podríamos interactuar con el servidor openstack.</p>
+<ol start="5">
+<li>Vamos a crear una instancia y la vamos a configurar con <a href="https://github.com/josedom24/curso_openstack_ies/blob/main/modulo3/cloudinit.md"><strong>cloud-init</strong></a>, para ello crea un fichero <code>cloud-config.yaml</code> con el siguiente contenido:</li>
+</ol>
+<pre class="language-yaml"><code class="language-yaml">    <span class="token comment">#cloud-config</span><br>         <span class="token key atrule">package_update</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br>         <span class="token key atrule">package_upgrade</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><br>         <span class="token key atrule">preserve_hostname</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><br>         <span class="token key atrule">fqdn</span><span class="token punctuation">:</span> test1.gonzalonazareno.org<br>         <span class="token key atrule">hostname</span><span class="token punctuation">:</span> test1<br>         <span class="token comment"># Crear un usuario y añadir clave pública ssh</span><br>         <span class="token key atrule">users</span><span class="token punctuation">:</span><br>           <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> jose<br>             <span class="token key atrule">sudo</span><span class="token punctuation">:</span> ALL=(ALL) NOPASSWD<span class="token punctuation">:</span>ALL<br>             <span class="token key atrule">shell</span><span class="token punctuation">:</span> /bin/bash<br>             <span class="token key atrule">passwd</span><span class="token punctuation">:</span> asdasd<br>             <span class="token key atrule">ssh_authorized_keys</span><span class="token punctuation">:</span><br>             <span class="token comment"># Clave pública de nuestra máquina.</span><br>               <span class="token punctuation">-</span> ssh<span class="token punctuation">-</span>rsa <br>         <span class="token key atrule">chpasswd</span><span class="token punctuation">:</span><br>           <span class="token key atrule">list</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>             root:asdasd</span><br>           <span class="token key atrule">expire</span><span class="token punctuation">:</span> <span class="token boolean important">False</span></code></pre>
+<p>Modifica el fichero e indica un nombre a la máquina, crea otro usuario y cambia las contraseñas.</p>
+<p>Este fichero actualizará la paquetería de la instancia, configurará el FQDN de la instancia, creará un nuevo usuario y cambiará la contraseña del usuario <code>root</code>.</p>
+<ol start="4">
+<li>Siguiendo el apartado <a href="https://github.com/josedom24/curso_openstack_ies/blob/main/modulo3/osc_nova.md">Gestión de instancia con OpenStack client (OSC)</a>, visualiza con el OSC los flavors disponibles, imágenes disponibles, claves disponibles, reglas de cortafuegos,…</li>
+<li>Crea una nueva instancia usando el comando que encontrarás en la sección <a href="https://github.com/josedom24/curso_openstack_ies/blob/main/modulo1/osc.md">Configuración de instancias con cloud-init</a>.</li>
+<li>Añade una IP flotante a la instancia para ello puedes usar los comandos que encuentras en <a href="https://github.com/josedom24/curso_openstack_ies/blob/main/modulo3/osc_nova.md">Gestión de instancia con OpenStack client (OSC)</a>.</li>
+<li>Accede por ssh (recuerda usar el usuario que has creado con cloud-init) a la instancia.</li>
+</ol>
+<h2 id="documento-realizado-por" tabindex="-1"><strong>Documento realizado por:</strong> <a class="direct-link" href="#documento-realizado-por" aria-hidden="true">#</a></h2>
+<p>✒️ <strong>Alejandro Montes Delgado</strong> - <em>2º ASIR</em></p>
+
+<hr>
+<ul><li>Siguiente: <a href="/posts/manejo-de-modulos/">Ejercicios de manejo de módulos</a></li><li>Anterior: <a href="/posts/gestion-de-paqueteria-aso/">Ejercicios gestión de paquetería</a></li>
+</ul>
+
+    </main>
+
+    <footer></footer>
+
+    <!-- Current page: /posts/crear-instancias-osc/ -->
+  </body>
+</html>

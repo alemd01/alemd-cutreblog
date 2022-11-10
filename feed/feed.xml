@@ -5,12 +5,39 @@
 	
 	<link href="https://example.com/feed/feed.xml" rel="self"/>
 	<link href="https://example.com/"/>
-	<updated>2022-11-08T00:00:00Z</updated>
+	<updated>2022-11-10T00:00:00Z</updated>
 	<id>https://example.com/</id>
 	<author>
 		<name>Alejandro Montes Delgado</name>
 		<email>aaleemd11@gmail.com</email>
 	</author>
+	
+	<entry>
+		<title>Compilar un Kernel linux a medida.</title>
+		<link href="https://example.com/posts/compilacion-kernel-a-medida/"/>
+		<updated>2022-11-10T00:00:00Z</updated>
+		<id>https://example.com/posts/compilacion-kernel-a-medida/</id>
+		<content type="html">&lt;h1 id=&quot;compilar-un-kernel-linux-a-medida&quot; tabindex=&quot;-1&quot;&gt;Compilar un Kérnel Linux a medida. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/compilacion-kernel-a-medida/#compilar-un-kernel-linux-a-medida&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;Antes que nada, crearemos un directorio de trabajo, donde descargaremos el kérnel y trabajaremos con él.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; ~/kernel&lt;br /&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/kernel&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Instalamos las herramientas de compilación:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; build-essential qtbase5-dev&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Añadimos al &lt;code&gt;sources.list&lt;/code&gt; el repositorio de bullseye-backports y con el siguiente comando podremos ver las versiones disponibles del kernel:&lt;/p&gt;
+&lt;pre class=&quot;language-txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;      ~/kernel$ sudo apt policy linux-source&lt;br /&gt;linux-source:&lt;br /&gt;  Instalados: (ninguno)&lt;br /&gt;  Candidato:  5.10.149-2&lt;br /&gt;  Tabla de versión:&lt;br /&gt;     6.0.3-1~bpo11+1 100&lt;br /&gt;        100 http://deb.debian.org/debian bullseye-backports/main amd64 Packages&lt;br /&gt;     5.19.11-1~bpo11+1 100&lt;br /&gt;        100 http://deb.debian.org/debian bullseye-backports/main amd64 Packages&lt;br /&gt;     5.18.16-1~bpo11+1 100&lt;br /&gt;        100 http://deb.debian.org/debian bullseye-backports/main amd64 Packages&lt;br /&gt;     5.10.149-2 500&lt;br /&gt;        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages&lt;br /&gt;     5.10.140-1 500&lt;br /&gt;        500 http://deb.debian.org/debian bullseye/main amd64 Packages&lt;br /&gt;     5.10.136-1 500&lt;br /&gt;        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages&lt;br /&gt;     5.10.127-2 500&lt;br /&gt;        500 http://deb.debian.org/debian bullseye/main amd64 Packages&lt;br /&gt;        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages&lt;br /&gt;     5.10.120-1 500&lt;br /&gt;        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages&lt;br /&gt;     5.10.113-1 500&lt;br /&gt;        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages&lt;br /&gt;     5.10.103-1 500&lt;br /&gt;        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;usaremos la versión del kernel 6.0.3.1. Para descargar el kernel con la versión que vamos a utilizar, usamos el siguiente comando:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; linux-source&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6.0&lt;/span&gt;.3-1~bpo11+1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;movemos a nuestro directorio el archivo que se ha descargado. A mí se me ha descargado en &lt;em&gt;/usr/src&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mv&lt;/span&gt; /usr/src/linux-source-6.0.tar.xz ./&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tenemos que desempaquetarlo, para ello usaremos tar:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-xf&lt;/span&gt; ./linux-source-6.0.tar.xz&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Como podemos ver, ya tenemos listo el kernel para trabajar con él.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P6.1.png&quot; alt=&quot;ASO-P6.1.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;A la hora de compilar el kernel, necesitamos el archivo .config el cual se van a cargar de forma estática los modulos del kernel. Cogeremos de referencia el &lt;code&gt;.config&lt;/code&gt; de nuestro kernel. Ejecutaremos el siguiente comando para ello:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; oldconfig&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;documento-realizado-por&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Documento realizado por:&lt;/strong&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/compilacion-kernel-a-medida/#documento-realizado-por&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;✒️ &lt;strong&gt;Alejandro Montes Delgado&lt;/strong&gt; - &lt;em&gt;2º ASIR&lt;/em&gt;&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>Ejercicios de modificación de parámetros del kérnel</title>
@@ -50,7 +77,7 @@
 		<content type="html">&lt;h3 id=&quot;1-comprueba-los-modulos-cargados-en-tu-equipo&quot; tabindex=&quot;-1&quot;&gt;1. Comprueba los módulos cargados en tu equipo. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#1-comprueba-los-modulos-cargados-en-tu-equipo&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Para ver los módulos cargados de mi equipo, usamos el siguiente comando:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ lsmod&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P4.1.png&quot; alt=&quot;ASO-P4.1.png&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P4.1.png&quot; alt=&quot;Imagen no encontrada: /img/ASO-P4.1.png&quot; title=&quot;Imagen no encontrada: /img/ASO-P4.1.png&quot; /&gt;
 lsmod, lo que hace es leer el contenido del archivo /proc/modules.&lt;/p&gt;
 &lt;h3 id=&quot;2-cuenta-el-numero-de-modulos-disponibles-en-el-nucleo-que-estas-usando&quot; tabindex=&quot;-1&quot;&gt;2. Cuenta el número de módulos disponibles en el núcleo que estás usando. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#2-cuenta-el-numero-de-modulos-disponibles-en-el-nucleo-que-estas-usando&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-R&lt;/span&gt; /lib/modules/&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-r&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;wc&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-l&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -82,6 +109,43 @@ lsmod, lo que hace es leer el contenido del archivo /proc/modules.&lt;/p&gt;
 &lt;p&gt;Una vez hecho esto ejecutamos el siguiente comando para actualizar:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; update-initramfs &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&quot;documento-realizado-por&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Documento realizado por:&lt;/strong&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/manejo-de-modulos/#documento-realizado-por&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;✒️ &lt;strong&gt;Alejandro Montes Delgado&lt;/strong&gt; - &lt;em&gt;2º ASIR&lt;/em&gt;&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Creación de instancias desde OSC</title>
+		<link href="https://example.com/posts/crear-instancias-osc/"/>
+		<updated>2022-11-03T00:00:00Z</updated>
+		<id>https://example.com/posts/crear-instancias-osc/</id>
+		<content type="html">&lt;ol&gt;
+&lt;li&gt;Instala el cliente de línea de comando de OpenStack cómo se muestra en &lt;a href=&quot;https://github.com/josedom24/curso_openstack_ies/blob/main/modulo1/osc.md&quot;&gt;Instalación y uso básico de OpenStack client (OSC)&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Primero vamos a crear un entorno virtual donde vamos a trabajar con OpenStack client, para ello instalaremos python y venv si es necesario.&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; python3 python3-venv&lt;br /&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; venv&lt;br /&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; venv&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Activamos el entorno virtual con el siguiente comando:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; osc&lt;br /&gt;python3 &lt;span class=&quot;token parameter variable&quot;&gt;-m&lt;/span&gt; venv osc&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Usamos el siguiente comando para instalar en el entorno virtual el cliente de openstack:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pip &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; python-openstackclient&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5.8&lt;/span&gt;.0&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Descarga de Horizon tu fichero de credenciales, cargálo y ejecuta la instrucción &lt;code&gt;openstack server list&lt;/code&gt; para visualizar tus instancias.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Una vez descargado el fichero, realizamos lo siguiente:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;source&lt;/span&gt; crendenciales.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tendríamos que insertar la contraseña con la que entramos a openstack y ya podríamos interactuar con el servidor openstack.&lt;/p&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Vamos a crear una instancia y la vamos a configurar con &lt;a href=&quot;https://github.com/josedom24/curso_openstack_ies/blob/main/modulo3/cloudinit.md&quot;&gt;&lt;strong&gt;cloud-init&lt;/strong&gt;&lt;/a&gt;, para ello crea un fichero &lt;code&gt;cloud-config.yaml&lt;/code&gt; con el siguiente contenido:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;language-yaml&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;    &lt;span class=&quot;token comment&quot;&gt;#cloud-config&lt;/span&gt;&lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;package_update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;package_upgrade&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;true&lt;/span&gt;&lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;preserve_hostname&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;false&lt;/span&gt;&lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;fqdn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; test1.gonzalonazareno.org&lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; test1&lt;br /&gt;         &lt;span class=&quot;token comment&quot;&gt;# Crear un usuario y añadir clave pública ssh&lt;/span&gt;&lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;           &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; jose&lt;br /&gt;             &lt;span class=&quot;token key atrule&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; ALL=(ALL) NOPASSWD&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;ALL&lt;br /&gt;             &lt;span class=&quot;token key atrule&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; /bin/bash&lt;br /&gt;             &lt;span class=&quot;token key atrule&quot;&gt;passwd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; asdasd&lt;br /&gt;             &lt;span class=&quot;token key atrule&quot;&gt;ssh_authorized_keys&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;             &lt;span class=&quot;token comment&quot;&gt;# Clave pública de nuestra máquina.&lt;/span&gt;&lt;br /&gt;               &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ssh&lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt;rsa &lt;br /&gt;         &lt;span class=&quot;token key atrule&quot;&gt;chpasswd&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br /&gt;           &lt;span class=&quot;token key atrule&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token scalar string&quot;&gt;&lt;br /&gt;             root:asdasd&lt;/span&gt;&lt;br /&gt;           &lt;span class=&quot;token key atrule&quot;&gt;expire&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean important&quot;&gt;False&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Modifica el fichero e indica un nombre a la máquina, crea otro usuario y cambia las contraseñas.&lt;/p&gt;
+&lt;p&gt;Este fichero actualizará la paquetería de la instancia, configurará el FQDN de la instancia, creará un nuevo usuario y cambiará la contraseña del usuario &lt;code&gt;root&lt;/code&gt;.&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Siguiendo el apartado &lt;a href=&quot;https://github.com/josedom24/curso_openstack_ies/blob/main/modulo3/osc_nova.md&quot;&gt;Gestión de instancia con OpenStack client (OSC)&lt;/a&gt;, visualiza con el OSC los flavors disponibles, imágenes disponibles, claves disponibles, reglas de cortafuegos,…&lt;/li&gt;
+&lt;li&gt;Crea una nueva instancia usando el comando que encontrarás en la sección &lt;a href=&quot;https://github.com/josedom24/curso_openstack_ies/blob/main/modulo1/osc.md&quot;&gt;Configuración de instancias con cloud-init&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Añade una IP flotante a la instancia para ello puedes usar los comandos que encuentras en &lt;a href=&quot;https://github.com/josedom24/curso_openstack_ies/blob/main/modulo3/osc_nova.md&quot;&gt;Gestión de instancia con OpenStack client (OSC)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Accede por ssh (recuerda usar el usuario que has creado con cloud-init) a la instancia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;documento-realizado-por&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Documento realizado por:&lt;/strong&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/crear-instancias-osc/#documento-realizado-por&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;✒️ &lt;strong&gt;Alejandro Montes Delgado&lt;/strong&gt; - &lt;em&gt;2º ASIR&lt;/em&gt;&lt;/p&gt;
 </content>
 	</entry>

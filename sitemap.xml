@@ -82,6 +82,11 @@
   </url>
   
   <url>
+    <loc>https://example.com/posts/crear-instancias-osc/</loc>
+    <lastmod>2022-11-03</lastmod>
+  </url>
+  
+  <url>
     <loc>https://example.com/posts/manejo-de-modulos/</loc>
     <lastmod>2022-11-03</lastmod>
   </url>
@@ -89,5 +94,10 @@
   <url>
     <loc>https://example.com/posts/modificacion-de-parametros/</loc>
     <lastmod>2022-11-08</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/posts/compilacion-kernel-a-medida/</loc>
+    <lastmod>2022-11-10</lastmod>
   </url>
 </urlset>

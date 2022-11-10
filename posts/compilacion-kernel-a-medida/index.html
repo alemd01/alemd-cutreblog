@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compilar un Kernel linux a medida.</title>
+    <meta name="description" content="En este articulo, veremos como compilar un kernel linux a medida.">
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/prism-base16-monokai.dark.css">
+    <link rel="stylesheet" href="/css/prism-diff.css">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Cutreblog">
+    <link rel="alternate" href="/feed/feed.json" type="application/json" title="Cutreblog">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/">Cutreblog</a></h1>
+      <ul class="nav">
+        <li class="nav-item"><a href="/">Inicio</a></li>
+        <li class="nav-item"><a href="/posts/">Blog</a></li>
+        <li class="nav-item"><a href="/about/">Sobre mí</a></li>
+      </ul>
+    </header>
+
+    <main class="tmpl-post">
+
+      <h1>Compilar un Kernel linux a medida.</h1>
+
+<time datetime="2022-11-10">10 Nov 2022</time>
+<a href="/tags/aso/" class="post-tag">ASO</a>
+
+<h1 id="compilar-un-kernel-linux-a-medida" tabindex="-1">Compilar un Kérnel Linux a medida. <a class="direct-link" href="#compilar-un-kernel-linux-a-medida" aria-hidden="true">#</a></h1>
+<p>Antes que nada, crearemos un directorio de trabajo, donde descargaremos el kérnel y trabajaremos con él.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/kernel<br><span class="token builtin class-name">cd</span> ~/kernel</code></pre>
+<p>Instalamos las herramientas de compilación:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> build-essential qtbase5-dev</code></pre>
+<p>Añadimos al <code>sources.list</code> el repositorio de bullseye-backports y con el siguiente comando podremos ver las versiones disponibles del kernel:</p>
+<pre class="language-txt"><code class="language-txt">      ~/kernel$ sudo apt policy linux-source<br>linux-source:<br>  Instalados: (ninguno)<br>  Candidato:  5.10.149-2<br>  Tabla de versión:<br>     6.0.3-1~bpo11+1 100<br>        100 http://deb.debian.org/debian bullseye-backports/main amd64 Packages<br>     5.19.11-1~bpo11+1 100<br>        100 http://deb.debian.org/debian bullseye-backports/main amd64 Packages<br>     5.18.16-1~bpo11+1 100<br>        100 http://deb.debian.org/debian bullseye-backports/main amd64 Packages<br>     5.10.149-2 500<br>        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages<br>     5.10.140-1 500<br>        500 http://deb.debian.org/debian bullseye/main amd64 Packages<br>     5.10.136-1 500<br>        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages<br>     5.10.127-2 500<br>        500 http://deb.debian.org/debian bullseye/main amd64 Packages<br>        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages<br>     5.10.120-1 500<br>        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages<br>     5.10.113-1 500<br>        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages<br>     5.10.103-1 500<br>        500 http://security.debian.org/debian-security bullseye-security/main amd64 Packages</code></pre>
+<p>usaremos la versión del kernel 6.0.3.1. Para descargar el kernel con la versión que vamos a utilizar, usamos el siguiente comando:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> linux-source<span class="token operator">=</span><span class="token number">6.0</span>.3-1~bpo11+1</code></pre>
+<p>movemos a nuestro directorio el archivo que se ha descargado. A mí se me ha descargado en <em>/usr/src</em>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mv</span> /usr/src/linux-source-6.0.tar.xz ./</code></pre>
+<p>Tenemos que desempaquetarlo, para ello usaremos tar:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-xf</span> ./linux-source-6.0.tar.xz</code></pre>
+<p>Como podemos ver, ya tenemos listo el kernel para trabajar con él.</p>
+<p><img src="/img/ASO-P6.1.png" alt="ASO-P6.1.png"></p>
+<p>A la hora de compilar el kernel, necesitamos el archivo .config el cual se van a cargar de forma estática los modulos del kernel. Cogeremos de referencia el <code>.config</code> de nuestro kernel. Ejecutaremos el siguiente comando para ello:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">make</span> oldconfig</code></pre>
+<h2 id="documento-realizado-por" tabindex="-1"><strong>Documento realizado por:</strong> <a class="direct-link" href="#documento-realizado-por" aria-hidden="true">#</a></h2>
+<p>✒️ <strong>Alejandro Montes Delgado</strong> - <em>2º ASIR</em></p>
+
+<hr>
+<ul><li>Anterior: <a href="/posts/modificacion-de-parametros/">Ejercicios de modificación de parámetros del kérnel</a></li>
+</ul>
+
+    </main>
+
+    <footer></footer>
+
+    <!-- Current page: /posts/compilacion-kernel-a-medida/ -->
+  </body>
+</html>
