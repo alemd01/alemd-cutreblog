@@ -47,6 +47,14 @@
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; dpkg &lt;span class=&quot;token parameter variable&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;/linux-image-6.0.3_6.0.3-1_amd64.deb&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ahora que está instalado el kernel, probaremos que funciona, para ello tendremos que reiniciar nuestra máquina y en &lt;em&gt;Advanced Options for Debian GNU/Linux&lt;/em&gt; seleccionaremos el nuevo kernel. Probaremos que todo funciona correctamente y volveremos a reiniciar y entraremos con el kernel que usamos habitualmente. Como podemos comprobar después de reiniciar, estamos usando el kernel 6.0.3.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P6.4.png&quot; alt=&quot;ASO-P6.4.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Ahora, realizaremos una nueva compilación y antes que nada, eliminaremos los ficheros residuales de la compilación. Para ello utilizaremos el siguiente comando.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P6.5.png&quot; alt=&quot;ASO-P6.5.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Para esta compilación, no vamos a usar los parametros &lt;em&gt;oldconfig&lt;/em&gt; ni &lt;em&gt;localmodconfig&lt;/em&gt;, usaremos &lt;em&gt;xconfig&lt;/em&gt; que es una aplicación gráfica para instalar los componentes a mano. Primero que nada instalaremos una dependencia:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; pkg-config&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ahora procederemos a hacer el make xconfig, nos aparecerá una ventana como la de la siguiente imagen y simplemente tenemos que quitar los módulos que no vayamos a usar en el kernel desenmarcando las casillas. Es un proceso largo y lento pero es sencillo de hacer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P6.6.png&quot; alt=&quot;ASO-P6.6.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Volvemos a contar cuantos módulos tiene el kernel:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/ASO-P6.7.png&quot; alt=&quot;ASO-P6.7.png&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;documento-realizado-por&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Documento realizado por:&lt;/strong&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/compilacion-kernel-a-medida/#documento-realizado-por&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;✒️ &lt;strong&gt;Alejandro Montes Delgado&lt;/strong&gt; - &lt;em&gt;2º ASIR&lt;/em&gt;&lt;/p&gt;
 </content>

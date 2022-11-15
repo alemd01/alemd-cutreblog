@@ -57,17 +57,17 @@
   </url>
   
   <url>
-    <loc>https://example.com/tags/examen/</loc>
-    <lastmod>2022-10-05</lastmod>
-  </url>
-  
-  <url>
     <loc>https://example.com/tags/ansible/</loc>
     <lastmod>2022-10-05</lastmod>
   </url>
   
   <url>
     <loc>https://example.com/tags/sri/</loc>
+    <lastmod>2022-10-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://example.com/tags/examen/</loc>
     <lastmod>2022-10-05</lastmod>
   </url>
   
