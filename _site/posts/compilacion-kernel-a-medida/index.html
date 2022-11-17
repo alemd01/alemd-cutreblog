@@ -59,6 +59,14 @@
 <pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> dpkg <span class="token parameter variable">-i</span> <span class="token punctuation">..</span>/linux-image-6.0.3_6.0.3-1_amd64.deb</code></pre>
 <p>Ahora que está instalado el kernel, probaremos que funciona, para ello tendremos que reiniciar nuestra máquina y en <em>Advanced Options for Debian GNU/Linux</em> seleccionaremos el nuevo kernel. Probaremos que todo funciona correctamente y volveremos a reiniciar y entraremos con el kernel que usamos habitualmente. Como podemos comprobar después de reiniciar, estamos usando el kernel 6.0.3.</p>
 <p><img src="/img/ASO-P6.4.png" alt="ASO-P6.4.png"></p>
+<p>Ahora, realizaremos una nueva compilación y antes que nada, eliminaremos los ficheros residuales de la compilación. Para ello utilizaremos el siguiente comando.</p>
+<p><img src="/img/ASO-P6.5.png" alt="ASO-P6.5.png"></p>
+<p>Para esta compilación, no vamos a usar los parametros <em>oldconfig</em> ni <em>localmodconfig</em>, usaremos <em>xconfig</em> que es una aplicación gráfica para instalar los componentes a mano. Primero que nada instalaremos una dependencia:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> pkg-config</code></pre>
+<p>Ahora procederemos a hacer el make xconfig, nos aparecerá una ventana como la de la siguiente imagen y simplemente tenemos que quitar los módulos que no vayamos a usar en el kernel desenmarcando las casillas. Es un proceso largo y lento pero es sencillo de hacer.</p>
+<p><img src="/img/ASO-P6.6.png" alt="ASO-P6.6.png"></p>
+<p>Volvemos a contar cuantos módulos tiene el kernel:</p>
+<p><img src="/img/ASO-P6.7.png" alt="ASO-P6.7.png"></p>
 <h2 id="documento-realizado-por" tabindex="-1"><strong>Documento realizado por:</strong> <a class="direct-link" href="#documento-realizado-por" aria-hidden="true">#</a></h2>
 <p>✒️ <strong>Alejandro Montes Delgado</strong> - <em>2º ASIR</em></p>
 

@@ -5,12 +5,33 @@
 	
 	<link href="https://example.com/feed/feed.xml" rel="self"/>
 	<link href="https://example.com/"/>
-	<updated>2022-11-10T00:00:00Z</updated>
+	<updated>2022-11-16T00:00:00Z</updated>
 	<id>https://example.com/</id>
 	<author>
 		<name>Alejandro Montes Delgado</name>
 		<email>aaleemd11@gmail.com</email>
 	</author>
+	
+	<entry>
+		<title>Interconexión de Servidores de Bases de datos</title>
+		<link href="https://example.com/posts/interconexion-servidores/"/>
+		<updated>2022-11-16T00:00:00Z</updated>
+		<id>https://example.com/posts/interconexion-servidores/</id>
+		<content type="html">&lt;h1 id=&quot;interconexion-de-servidores-de-bases-de-datos&quot; tabindex=&quot;-1&quot;&gt;Interconexión de Servidores de Bases de Datos. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/interconexion-servidores/#interconexion-de-servidores-de-bases-de-datos&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;1-realizar-un-enlace-entre-dos-servidores-de-bases-de-datos-oracle-explicando-la-configuracion-necesaria-en-ambos-extremos-y-demostrando-su-funcionamiento&quot; tabindex=&quot;-1&quot;&gt;1. Realizar un enlace entre dos servidores de bases de datos ORACLE, explicando la configuración necesaria en ambos extremos y demostrando su funcionamiento. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/interconexion-servidores/#1-realizar-un-enlace-entre-dos-servidores-de-bases-de-datos-oracle-explicando-la-configuracion-necesaria-en-ambos-extremos-y-demostrando-su-funcionamiento&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;En el escenario, tenemos 2 servidores Oracle, uno creado en mi propio sistema debian y otro en una máquina virtual debian. Ambos se conectan a través de una red virtual. Lo primero que haremos, es crear un usuario en cada servidor con los privilegios suficientes para poder realizar la interconexión.&lt;/p&gt;
+&lt;p&gt;El usuario del servidor 1:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/BD-P2.2.png&quot; alt=&quot;BD-P2.2.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;El usuario del servidor 2:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://example.com/img/BD-P2.1.png&quot; alt=&quot;BD-P2.1.png&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;He añadido como ejemplo el esquema SCOTT para poder visualizar algunas tablas. Vamos a configurar el archivo &lt;code&gt;tnsntames.ora&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;nano&lt;/span&gt; /opt/oracle/product/19c/dbhome_1/network/admin/tnsnames.ora&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;RCLCDB &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;DESCRIPTION &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ADDRESS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PROTOCOL &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; TCP&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HOST &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;192.168&lt;/span&gt;.122.97&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PORT &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1521&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;))&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;CONNECT_DATA &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;SERVER &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; DEDICATED&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;SERVICE_NAME &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ORCLCDB&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br /&gt;  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;documento-realizado-por&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;Documento realizado por:&lt;/strong&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/interconexion-servidores/#documento-realizado-por&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;✒️ &lt;strong&gt;Alejandro Montes Delgado&lt;/strong&gt; - &lt;em&gt;2º ASIR&lt;/em&gt;&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>Compilar un Kernel linux a medida.</title>
