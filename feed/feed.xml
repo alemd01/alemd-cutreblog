@@ -38,8 +38,7 @@
 		<link href="https://example.com/posts/compilacion-kernel-a-medida/"/>
 		<updated>2022-11-10T00:00:00Z</updated>
 		<id>https://example.com/posts/compilacion-kernel-a-medida/</id>
-		<content type="html">&lt;h1 id=&quot;compilar-un-kernel-linux-a-medida&quot; tabindex=&quot;-1&quot;&gt;Compilar un Kérnel Linux a medida. &lt;a class=&quot;direct-link&quot; href=&quot;https://example.com/posts/compilacion-kernel-a-medida/#compilar-un-kernel-linux-a-medida&quot; aria-hidden=&quot;true&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;Antes que nada, crearemos un directorio de trabajo, donde descargaremos el kérnel y trabajaremos con él.&lt;/p&gt;
+		<content type="html">&lt;p&gt;Antes que nada, crearemos un directorio de trabajo, donde descargaremos el kérnel y trabajaremos con él.&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; ~/kernel&lt;br /&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/kernel&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Instalamos las herramientas de compilación:&lt;/p&gt;
 &lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; build-essential qtbase5-dev&lt;/code&gt;&lt;/pre&gt;
